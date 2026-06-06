@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Codex Mini Beta 更新</title>
+    <title>Codex Mini 更新</title>
     <link>https://github.com/CoimgRain/Codex-Mini</link>
-    <description>Codex Mini Beta 官方更新源</description>
+    <description>Codex Mini 官方更新源</description>
     <language>zh-CN</language>
     <item>
-      <title>Codex Mini Beta v3.0.5</title>
-      <sparkle:releaseNotesLink>https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-beta-v3.0.5</sparkle:releaseNotesLink>
-      <pubDate>Sat, 06 Jun 2026 05:32:50 +0000</pubDate>
-      <enclosure url="https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-beta-v3.0.5/Codex.Mini.Beta.v3.0.5.dmg" length="42662150" type="application/octet-stream" sparkle:version="305" sparkle:shortVersionString="3.0.5" sparkle:edSignature="Rh08btB/U8QgW8bM3lMmTyQNcCOjY5nkvLraacsyaBDnHq3Owse7KU7K8jelsJpU4V4itB5WDvQC0fXzhpbhDw==" />
+      <title>Codex Mini v4.0.3</title>
+      <sparkle:releaseNotesLink>https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-v4.0.3</sparkle:releaseNotesLink>
+      <pubDate>Sat, 06 Jun 2026 17:06:20 +0000</pubDate>
+      <enclosure url="https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.0.3/Codex.Mini.v4.0.3.dmg" length="42195059" type="application/octet-stream" sparkle:version="403" sparkle:shortVersionString="4.0.3" sparkle:edSignature="BY3Ypx9D/+reoWtSrU2+EVlwDV5O6VKP+Q4aBBWZJo4qD0Nd24WCCFIWfwX7s1SjReTJPm7zr/KRs3xIEnAFBg==" />
     </item>
   </channel>
 </rss>
