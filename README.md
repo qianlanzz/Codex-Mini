@@ -16,15 +16,23 @@ Codex Mini 是一个把手机浏览器连接到电脑上的 Codex Desktop 的轻
 
 ## 当前发布版本
 
-- 版本：v4.3.0（macOS 与 Windows 已对齐）
-- 🍎 macOS · Apple 芯片（M1/M2/M3/M4…）：[下载 Codex.Mini.v4.3.0.dmg](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.0/Codex.Mini.v4.3.0.dmg)
-- 💻 macOS · Intel 芯片（x86）：[下载 Codex.Mini.Intel.v4.3.0.dmg](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.0/Codex.Mini.Intel.v4.3.0.dmg)
-- 🪟 Windows（10 / 11，64 位）：[下载 CodexMiniWindowsSetup-v4.3.0.exe](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.0/CodexMiniWindowsSetup-v4.3.0.exe)
+- 版本：v4.3.1（macOS 与 Windows 已对齐）
+- 🍎 macOS · Apple 芯片（M1/M2/M3/M4…）：[下载 Codex.Mini.v4.3.1.dmg](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.1/Codex.Mini.v4.3.1.dmg)
+- 💻 macOS · Intel 芯片（x86）：[下载 Codex.Mini.Intel.v4.3.1.dmg](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.1/Codex.Mini.Intel.v4.3.1.dmg)
+- 🪟 Windows（10 / 11，64 位）：[下载 CodexMiniWindowsSetup-v4.3.1.exe](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.3.1/CodexMiniWindowsSetup-v4.3.1.exe)
 - 图文安装说明：[macOS 版（PDF）](docs/Codex%20Mini%20Mac%20%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf) ｜ [Windows 版（PDF）](docs/Codex%20Mini%20Windows%20%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf)
-- Release 页面：[codex-mini-v4.3.0](https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-v4.3.0)
+- Release 页面：[codex-mini-v4.3.1](https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-v4.3.1)
 - 安装方式：macOS 打开 DMG 并把 `Codex Mini.app` 拖进 `Applications`；Windows 双击 EXE 安装（无需管理员权限、无需自己装 Node），装完从桌面或开始菜单启动
 
-### 最新版 V4.2.3
+### 最新版 V4.3.1
+
+- **兼容 Codex++（本版重点）**：检测到 Codex++ 后，手机端免点击直接控制同一个 Codex，无需为两者分别开启 Codex，两者可以同时共存协作
+- 设置页新增「Bug 反馈」入口：遇到问题可以直接从手机提交截图和文字反馈
+- 内置前端热更新机制：常用界面的小改进能更快、更稳地下发到你的 App
+- 控制面板右下角显示版本号
+- 优化 App 内「使用助手」与安装 / 排错指引
+
+### V4.2.3
 
 - 电脑 Codex 上直接发送的消息，现在会同步显示到手机端聊天记录，并像正常收发消息一样自然逐条出现
 - 手机端线程列表与电脑 Codex 界面保持一致，SSH 远程线程也只显示电脑端当前可见的会话
