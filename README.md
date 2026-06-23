@@ -16,15 +16,22 @@ Codex Mini 是一个把手机浏览器连接到电脑上的 Codex Desktop 的轻
 
 ## 当前发布版本
 
-- 版本：v4.4.2（macOS 与 Windows 已对齐）
-- 🍎 macOS · Apple 芯片（M1/M2/M3/M4…）：[Codex Mini v4.4.2（Apple Silicon 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.2/CodexMini_v4.4.2_macOS_AppleSilicon.dmg)
-- 💻 macOS · Intel 芯片（x86）：[Codex Mini v4.4.2（Intel Mac 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.2/CodexMini_v4.4.2_macOS_Intel.dmg)
-- 🪟 Windows（10 / 11，64 位）：[Codex Mini v4.4.2（Windows 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.2/CodexMini_v4.4.2_Windows_Setup.exe)
+- 版本：v4.4.3（macOS 与 Windows 已对齐）
+- 🍎 macOS · Apple 芯片（M1/M2/M3/M4…）：[Codex Mini v4.4.3（Apple Silicon 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.3/CodexMini_v4.4.3_macOS_AppleSilicon.dmg)
+- 💻 macOS · Intel 芯片（x86）：[Codex Mini v4.4.3（Intel Mac 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.3/CodexMini_v4.4.3_macOS_Intel.dmg)
+- 🪟 Windows（10 / 11，64 位）：[Codex Mini v4.4.3（Windows 版）](https://github.com/CoimgRain/Codex-Mini/releases/download/codex-mini-v4.4.3/CodexMini_v4.4.3_Windows_Setup.exe)
 - 图文安装说明：[macOS 版（PDF）](docs/Codex%20Mini%20Mac%20%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf) ｜ [Windows 版（PDF）](docs/Codex%20Mini%20Windows%20%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf)
-- Release 页面：[codex-mini-v4.4.2](https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-v4.4.2)
+- Release 页面：[codex-mini-v4.4.3](https://github.com/CoimgRain/Codex-Mini/releases/tag/codex-mini-v4.4.3)
 - 安装方式：macOS 打开 DMG 并把 `Codex Mini.app` 拖进 `Applications`；Windows 双击 EXE 安装（无需管理员权限、无需自己装 Node），装完从桌面或开始菜单启动
 
-### 最新版 V4.4.2
+### 最新版 V4.4.3
+
+- **打开即见聊天记录**：打开 App 或线程标题刷新时，会自动把当前线程的聊天记录加载出来，不再出现「已选中线程、聊天区却空白」
+- **待发送「引导」消息修复**：排队中的引导卡片现在会稳定显示，不再偶发不出现
+- **Windows 控制面板任务栏图标与退出菜单**：托盘操作更顺手（仅 Windows）
+- **Windows 远程 SSH 修复**：远程线程的主机匹配更稳定，远程连接更可靠（仅 Windows）
+
+### V4.4.2
 
 - **三平台安装包同步发布**：Apple Silicon、Intel 和 Windows 三个安装包已对齐到 4.4.2
 - **线程列表可继续加载更早对话**：不再把较早会话隐藏在固定数量之后
