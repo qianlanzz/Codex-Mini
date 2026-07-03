@@ -1,7 +1,10 @@
 {
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js"
+    "check": "node --check server.js && node --check relay-hub.js && node --check relay-agent.js && node --check scripts/test-relay.js",
+    "relay:hub": "node relay-hub.js",
+    "relay:agent": "node relay-agent.js",
+    "relay:test": "node scripts/test-relay.js"
   },
   "dependencies": {},
   "devDependencies": {},
