@@ -200,7 +200,7 @@ function createHub(options = {}) {
 
   function getDevicePublicUrl(device, req) {
     const publicHost = getDevicePublicHost(device);
-    if (!publicHost) return `/hub/open/${encodeURIComponent(device.id)}`;
+    if (!publicHost) return `/device/${encodeURIComponent(device.id)}/`;
     const proto = String(req.headers['x-forwarded-proto'] || '').split(',')[0] || 'https';
     return `${proto}://${publicHost}/`;
   }
@@ -358,6 +358,19 @@ function createHub(options = {}) {
     return null;
   }
 
+  function resolveDeviceByPath(rawUrl = '') {
+    const parsed = new URL(rawUrl || '/', 'http://codex-relay.local');
+    const parts = parsed.pathname.split('/').filter(Boolean);
+    if (parts[0] !== 'device' || !parts[1]) return null;
+    const deviceId = decodeURIComponent(parts[1]);
+    const device = devices.get(deviceId);
+    if (!device) return null;
+    const prefix = `/device/${encodeURIComponent(deviceId)}`;
+    let targetPath = parsed.pathname.slice(prefix.length) || '/';
+    if (!targetPath.startsWith('/')) targetPath = `/${targetPath}`;
+    return { device, targetPath: `${targetPath}${parsed.search}` };
+  }
+
   function renderDashboard(req, res) {
     const rows = [...devices.values()]
       .sort((a, b) => Number(isOnline(b)) - Number(isOnline(a)) || String(a.name).localeCompare(String(b.name)))
@@ -447,7 +460,7 @@ function createHub(options = {}) {
     res.end();
   }
 
-  async function proxyToDevice(req, res, device) {
+  async function proxyToDevice(req, res, device, targetUrl = '') {
     if (!isOnline(device)) {
       return writeJson(res, 503, { ok: false, code: 'DEVICE_OFFLINE', message: '设备离线或 Agent 心跳超时。' });
     }
@@ -459,7 +472,7 @@ function createHub(options = {}) {
     const task = {
       id: requestId,
       method: req.method,
-      path: req.url || '/',
+      path: targetUrl || req.url || '/',
       headers: sanitizeForwardRequestHeaders(req.headers),
       bodyBase64: body.length ? body.toString('base64') : '',
       timeoutMs: config.requestTimeoutMs,
@@ -592,6 +605,12 @@ function createHub(options = {}) {
       if (device) {
         if (!adminAuthorized(req)) return renderLogin(req, res);
         return await proxyToDevice(req, res, device);
+      }
+
+      const routed = resolveDeviceByPath(req.url || '');
+      if (routed) {
+        if (!adminAuthorized(req)) return renderLogin(req, res);
+        return await proxyToDevice(req, res, routed.device, routed.targetPath);
       }
 
       if (!adminAuthorized(req)) return renderLogin(req, res);

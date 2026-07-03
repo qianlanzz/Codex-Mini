@@ -170,6 +170,14 @@ async function main() {
     assert.strictEqual(page.status, 200);
     assert.match(page.body.toString('utf8'), /Fake Codex Mini/);
 
+    const pathPage = await request(hubPort, {
+      host: 'codex.test',
+      path: '/device/macbook/',
+      headers: { 'x-codex-relay-admin': adminToken },
+    });
+    assert.strictEqual(pathPage.status, 200);
+    assert.match(pathPage.body.toString('utf8'), /Fake Codex Mini/);
+
     const send = await request(hubPort, {
       host: deviceHost,
       method: 'POST',
@@ -184,6 +192,21 @@ async function main() {
     const sendData = JSON.parse(send.body.toString('utf8'));
     assert.strictEqual(sendData.ok, true);
     assert.strictEqual(sendData.received.text, 'hello from relay');
+
+    const pathSend = await request(hubPort, {
+      host: 'codex.test',
+      method: 'POST',
+      path: '/device/macbook/send',
+      headers: {
+        'content-type': 'application/json',
+        'x-codex-relay-admin': adminToken,
+      },
+      body: JSON.stringify({ text: 'hello from path relay' }),
+    });
+    assert.strictEqual(pathSend.status, 200);
+    const pathSendData = JSON.parse(pathSend.body.toString('utf8'));
+    assert.strictEqual(pathSendData.ok, true);
+    assert.strictEqual(pathSendData.received.text, 'hello from path relay');
 
     console.log('relay integration test passed');
   } finally {

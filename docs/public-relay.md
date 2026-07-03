@@ -12,7 +12,7 @@
   -> 在线设备列表
 
 点击 Mac / Windows
-  -> https://mac.codex.example.com
+  -> https://codex.example.com/device/macbook/
   -> Caddy
   -> relay-hub.js
   -> relay-agent.js 长轮询取任务
@@ -31,8 +31,6 @@
 cd /path/to/Codex-Mini
 export HUB_HOST=127.0.0.1
 export HUB_PORT=3000
-export HUB_BASE_DOMAIN=codex.example.com
-export HUB_COOKIE_DOMAIN=.codex.example.com
 export HUB_ADMIN_TOKEN='换成管理口令'
 export HUB_AGENT_SECRET='换成Agent连接密钥'
 npm run relay:hub
@@ -41,7 +39,7 @@ npm run relay:hub
 Caddy 示例：
 
 ```caddyfile
-codex.example.com, mac.codex.example.com, win.codex.example.com {
+codex.example.com {
     encode zstd gzip
     reverse_proxy 127.0.0.1:3000
 }
@@ -53,7 +51,7 @@ codex.example.com, mac.codex.example.com, win.codex.example.com {
 https://codex.example.com
 ```
 
-如果设置了 `HUB_ADMIN_TOKEN`，首次打开会要求输入管理口令。`HUB_COOKIE_DOMAIN=.codex.example.com` 可以让登录态同时覆盖主域名和设备子域名。
+如果设置了 `HUB_ADMIN_TOKEN`，首次打开会要求输入管理口令。
 
 ## Mac / Windows 设备
 
@@ -76,7 +74,6 @@ export RELAY_AGENT_SECRET='和服务器HUB_AGENT_SECRET一致'
 export RELAY_DEVICE_ID='macbook'
 export RELAY_DEVICE_NAME='MacBook Pro'
 export RELAY_DEVICE_SLUG='mac'
-export RELAY_DEVICE_PUBLIC_HOST='mac.codex.example.com'
 export LOCAL_CODEX_BASE='http://127.0.0.1:8787'
 export LOCAL_CODEX_TOKEN='这台设备的本地CodexMiniToken'
 npm run relay:agent
@@ -90,7 +87,6 @@ $env:RELAY_AGENT_SECRET="和服务器HUB_AGENT_SECRET一致"
 $env:RELAY_DEVICE_ID="windows-pc"
 $env:RELAY_DEVICE_NAME="Windows PC"
 $env:RELAY_DEVICE_SLUG="win"
-$env:RELAY_DEVICE_PUBLIC_HOST="win.codex.example.com"
 $env:LOCAL_CODEX_BASE="http://127.0.0.1:8787"
 $env:LOCAL_CODEX_TOKEN="这台设备的本地CodexMiniToken"
 npm run relay:agent
@@ -100,9 +96,9 @@ npm run relay:agent
 
 - `HUB_ADMIN_TOKEN`：网页登录口令，建议必须设置。
 - `HUB_AGENT_SECRET` / `RELAY_AGENT_SECRET`：Agent 连接 Hub 的共享密钥，必须一致。
-- `HUB_BASE_DOMAIN`：主域名，例如 `codex.example.com`。
-- `HUB_COOKIE_DOMAIN`：建议设为 `.codex.example.com`，让登录 cookie 覆盖所有子域名。
-- `RELAY_DEVICE_PUBLIC_HOST`：设备子域名，例如 `mac.codex.example.com`。
+- `HUB_BASE_DOMAIN`：可选。设置后设备默认走 `slug.HUB_BASE_DOMAIN` 子域名；不设置时设备走 `/device/<id>/` 单域名路径。
+- `HUB_COOKIE_DOMAIN`：可选。只有使用子域名设备入口时才建议设为 `.codex.example.com`。
+- `RELAY_DEVICE_PUBLIC_HOST`：可选。设置后这个设备使用独立子域名；不设置时使用 `/device/<id>/`。
 - `LOCAL_CODEX_TOKEN`：本机 Codex Mini 的 `MOBILE_TYPER_TOKEN`，只保存在设备端，不发给浏览器。
 
 ## 测试

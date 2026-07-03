@@ -1697,6 +1697,8 @@
     const token = queryToken || localStorage.getItem('codexMini.token') || '';
     function detectBasePath(pathname) {
       if (pathname === '/codex-mini' || pathname.startsWith('/codex-mini/')) return '/codex-mini';
+      const relayMatch = String(pathname || '').match(/^\/device\/[^/]+/);
+      if (relayMatch) return relayMatch[0];
       return '';
     }
     const basePath = detectBasePath(location.pathname);
